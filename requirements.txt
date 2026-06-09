@@ -1,0 +1,12 @@
+langchain
+langchain-community
+langchain-core
+langchain-ollama
+langchain-postgres
+langchain-text-splitters
+pgvector
+sqlalchemy
+flask
+psycopg2-binary
+icecream
+ollama
