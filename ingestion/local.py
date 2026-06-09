@@ -14,9 +14,12 @@ from langchain_text_splitters import TextSplitter
 from sqlalchemy import create_engine
 from icecream import ic # type: ignore
 
-embeds= OllamaEmbeddings(model="mistral")
-eng=create_engine("postgresql://supraja:asdf@localhost:5433/vector_db")
-vectorstore =PGVector(
+embeds = OllamaEmbeddings(model="mistral")
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL environment variable is not set")
+eng = create_engine(DATABASE_URL)
+vectorstore = PGVector(
     connection=eng,
     embeddings=embeds,
     collection_name="pdf_data"
